@@ -130,8 +130,9 @@ async def new_gen(began_with):
     #Navigate to the website
     driver.get("https://outputter.io/bin-generator/")
     input_bin = driver.find_element(By.XPATH, '//*[@id="content"]/section[3]/div/div[1]/form/div[3]/div/input').send_keys(began_with)
+    await asyncio.sleep(3)
     generate = driver.find_element(By.XPATH, '//*[@id="content"]/section[3]/div/div[1]/form/div[5]/div/button').click()
-    time.sleep(2)
+    await asyncio.sleep(3)
     
     textarea = driver.find_element(By.XPATH, '//*[@id="content"]/section[3]/div/div[2]/div')
     generated_cards = (textarea.text).split('\n')
