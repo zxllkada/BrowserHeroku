@@ -45,6 +45,7 @@ async def SolveCaptchaBrowser(url):
     solve, count = False, 1
     
     browser = await createDriver()
+    browser.set_page_load_timeout(120)
     browser.get(url)
     while solve != True:
         if count == 15:
@@ -65,7 +66,7 @@ async def SolveCaptchaBrowser(url):
                         currect_button = idx
                         break
 
-                wait = WebDriverWait(browser, 40)
+                wait = WebDriverWait(browser, 60)
                 button = wait.until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="main_div"]/div/div/div/div/div/button[{currect_button}]')))
                 button.click()
                 
@@ -79,7 +80,7 @@ async def SolveCaptchaBrowser(url):
                 
             elif "const randomNumber" in script.text:
                 CaptchaText = ((script.text).split('ctx.fillText("')[1]).split('"[i], xInitialSpace')[0]
-                wait = WebDriverWait(browser, 40)
+                wait = WebDriverWait(browser, 60)
                 input_field = wait.until(EC.element_to_be_clickable((By.NAME, "answer")))
                 input_field.send_keys(CaptchaText)
                 
