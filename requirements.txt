@@ -2,7 +2,4 @@ telethon
 bs4
 selenium
 requests
-keras
-pytesseract
-tensorflow
-opencv-python==4.5.5.64
+faker
