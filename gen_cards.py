@@ -12,7 +12,7 @@ import time
 from bs4 import BeautifulSoup
 
 from faker import Faker
-import requests, json, asyncio
+import requests, json, asyncio, os
 
 faker = Faker()
 
@@ -27,6 +27,13 @@ headers = {
 }
 
 Cards_Datails = {}
+
+driver_path = os.environ.get("GOOGLEDRIVER_PATH")
+options = webdriver.ChromeOptions()
+options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36")
+
+
 
 async def gen_cards(began_with):
     global Cards_Datails
@@ -113,9 +120,7 @@ async def new_gen(began_with):
     card_list = []
 
     # Initialize the webdriver
-    driver_path = "chromedriver.exe"
-    options = webdriver.ChromeOptions()
-    options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36")
+    #driver_path = "chromedriver.exe"
     driver = webdriver.Chrome(executable_path=driver_path, options=options)
     
     #Navigate to the website
