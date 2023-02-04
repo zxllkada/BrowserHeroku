@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from bs4 import BeautifulSoup
-import asyncio
+import asyncio, os
 
 # driver_path = "chromedriver.exe"
 # browser = webdriver.Chrome(executable_path=driver_path)
