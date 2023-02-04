@@ -57,6 +57,7 @@ async def SolveCaptchaBrowser(url):
         html = browser.page_source
         
         soup = BeautifulSoup(html, 'html.parser')
+        print (soup)
         scripts = soup.find_all("script")
         for script in scripts:
             print (script)
