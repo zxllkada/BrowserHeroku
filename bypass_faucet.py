@@ -19,7 +19,7 @@ async def createDriver():
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-popup-blocking")
+    options.add_argument("popfired=1")
     
     myDriver = webdriver.Chrome(executable_path=driver_path, options=options)
     return myDriver
