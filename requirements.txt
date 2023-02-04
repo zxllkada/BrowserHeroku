@@ -2,10 +2,7 @@ telethon
 bs4
 selenium
 requests
-faker
 keras
 pytesseract
-pillow
 tensorflow
-tesseract
 opencv-python==4.5.5.64
