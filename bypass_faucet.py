@@ -44,7 +44,7 @@ async def createDriver():
 async def SolveCaptchaBrowser(url):
     solve, count = False, 1
     
-    browser = createDriver()
+    browser = await createDriver()
     browser.get(url)
     while solve != True:
         if count == 15:
