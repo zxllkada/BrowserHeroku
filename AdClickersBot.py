@@ -9,7 +9,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.contacts import UnblockRequest
 
-from Detectors import DetectAnimals, DetectEmoji, DelectNumbers, DelectText
+from Detectors import DetectEmoji #, DelectNumbers, DelectText, DetectAnimals
 from bypass_faucet import *
 
 
