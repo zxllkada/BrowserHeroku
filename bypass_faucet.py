@@ -61,6 +61,7 @@ async def SolveCaptchaBrowser(url):
         for script in scripts:
             if "const canvas" in script.text:
                 emoji = ((script.text).split('contex.fillText("')[1]).split('", canvas.width')[0]
+                print (emoji)
                 buttons = soup.find_all('button', class_='emojibtn')
                 for idx, button in enumerate(buttons, start=1):
                     if str(button.text).strip() == emoji:
@@ -81,11 +82,12 @@ async def SolveCaptchaBrowser(url):
                 
             elif "const randomNumber" in script.text:
                 CaptchaText = ((script.text).split('ctx.fillText("')[1]).split('"[i], xInitialSpace')[0]
+                print (CaptchaText)
                 wait = WebDriverWait(browser, 60)
                 input_field = wait.until(EC.element_to_be_clickable((By.NAME, "answer")))
                 input_field.send_keys(CaptchaText)
                 
-                await asyncio.sleep(3)
+                await asyncio.sleep(5)
                 ClickSubmit = wait.until(EC.element_to_be_clickable((By.ID, "button"))).click()
                 
                 html = browser.page_source
