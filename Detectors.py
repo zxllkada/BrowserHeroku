@@ -11,8 +11,7 @@ import difflib
 from telethon.tl.functions.messages import GetEmojiKeywordsRequest
 
 
-# only for windows
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 model = ResNet50(weights='imagenet')
 
 async def DetectAnimals(event, media):
