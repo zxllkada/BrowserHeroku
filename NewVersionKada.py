@@ -4,6 +4,7 @@ import asyncio
 # HandyBot
 from HandyBot import *
 from AdClickersBot import *
+from ClickBee import *
 
 # DATA
 api_id = 1724716
