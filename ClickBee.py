@@ -56,7 +56,7 @@ async def ClickBee_Function(event):
                     await conv.send_message('🔙 Back'), await asyncio.sleep(2)
                     break
                 else:
-                    browser = createDriver()
+                    browser = await createDriver()
                     browser.get(Website.reply_markup.rows[0].buttons[1].url)
                         
                     is_reward = await conv.get_response()
