@@ -47,6 +47,7 @@ async def SolveCaptchaBrowser(url):
     browser = await createDriver()
     browser.set_page_load_timeout(120)
     browser.get(url)
+    print ("url is opened")
     while solve != True:
         if count == 15:
             break
@@ -97,6 +98,7 @@ async def SolveCaptchaBrowser(url):
             await asyncio.sleep(3)
             browser.refresh()
             
+    print ("url is closed")
     browser.quit()
     solve, count = False, 1
 
