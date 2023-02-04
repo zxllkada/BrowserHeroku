@@ -1,6 +1,6 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
 
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.tl.functions.messages import ForwardMessagesRequest
@@ -13,19 +13,19 @@ import asyncio
 
 
 # Create a browser
-def createDriver() -> webdriver.Chrome:
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
+# def createDriver() -> webdriver.Chrome:
+#     chrome_options = webdriver.ChromeOptions()
+#     chrome_options.add_argument("--headless")
+#     chrome_options.add_argument("--no-sandbox")
+#     chrome_options.add_argument("--disable-dev-shm-usage")
     
-    prefs = {"profile.managed_default_content_settings.images":2}
-    chrome_options.headless = True
+#     prefs = {"profile.managed_default_content_settings.images":2}
+#     chrome_options.headless = True
 
-    chrome_options.add_experimental_option("prefs", prefs)
-    myDriver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+#     chrome_options.add_experimental_option("prefs", prefs)
+#     myDriver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-    return myDriver
+#     return myDriver
 
 
 async def HandyBot_Clickers(event):
@@ -51,14 +51,17 @@ async def HandyBot_Clickers(event):
                         solved, Sleep = await Message.messages[0].click(text=str(solve)), await asyncio.sleep(1)
                 else:
                     try:
-                        browser = createDriver()
-                        browser.get(Website.reply_markup.rows[0].buttons[0].url)
+                        pass
+               
+#                         browser = createDriver()
+#                         browser.get(Website.reply_markup.rows[0].buttons[0].url)
 
-                        is_reward = await conv.get_response()
-                        if (is_reward.text).startswith('✅ Task Completed!'):
-                            browser.quit()
-                        else:
-                            Skip = await Website.click(text='Skip ➡️')
+#                         is_reward = await conv.get_response()
+#                         if (is_reward.text).startswith('✅ Task Completed!'):
+#                             browser.quit()
+#                         else:
+#                             Skip = await Website.click(text='Skip ➡️')
+
                     except:
                         break
             await asyncio.sleep(2)
@@ -190,10 +193,10 @@ async def HandyBot_Clickers(event):
             await asyncio.sleep(2)
                 
 
-    VisitLinks = await HandyBot_VisitLinks()
+    #VisitLinks = await HandyBot_VisitLinks()
     JoinChannels = await HandyBot_JoinChannels()
     JoinBots = await HandyBot_JoinBots()
     ViewPosts = await HandyBot_ViewPosts()
-    WatchYoutube = await HandyBot_WatchYoutube()
+    #WatchYoutube = await HandyBot_WatchYoutube()
     
     
