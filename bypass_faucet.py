@@ -59,6 +59,7 @@ async def SolveCaptchaBrowser(url):
         soup = BeautifulSoup(html, 'html.parser')
         scripts = soup.find_all("script")
         for script in scripts:
+            print (script)
             if "const canvas" in script.text:
                 emoji = ((script.text).split('contex.fillText("')[1]).split('", canvas.width')[0]
                 print (emoji)
