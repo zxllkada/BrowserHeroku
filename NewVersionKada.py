@@ -5,6 +5,7 @@ import asyncio
 from HandyBot import *
 from AdClickersBot import *
 from ClickBee import *
+from HkBot import *
 
 # DATA
 api_id = 1724716
@@ -15,7 +16,7 @@ iqthon.start()
 
 
 # ACTIVE SCRIPTS
-HandyBtc, AdClickers, ClickBee = False, False, False
+HandyBtc, AdClickers, ClickBee, HkBot = False, False, False, False
 
 #############################################################################################
 @iqthon.on(events.NewMessage(outgoing=True, pattern=r'start script handybtc'))
@@ -94,6 +95,42 @@ async def clickbee_earn(event):
                 print (error)
                 pass
             await asyncio.sleep(30)
+            
+###############################################################################
+@iqthon.on(events.NewMessage(outgoing=True, pattern=r'start script hk_usdt'))
+async def HkUsdtActive(event):
+    global HkBot
+    HkBot, reply = True, await event.reply('**script hk_usdt started**')
+    run = await hkearn_earn(event)
+    
+@iqthon.on(events.NewMessage(outgoing=True, pattern=r'stop script hk_usdt'))
+async def HkUsdtUnActive(event):
+    global HkBot
+    HkBot, reply = False, await event.reply('**script hk_usdt stopped**')
+
+async def hkearn_earn(event):
+    global HkBot
+    
+    if HkBot == True:
+        while True:
+            if HkBot == False:
+                break
+            try:
+                start = await HkEarn_Function(event)
+            except Exception as error:
+                print (error)
+                pass
+            await asyncio.sleep(30)
+
+
+
+
+
+
+
+
+
+
 
             
 # RUN
