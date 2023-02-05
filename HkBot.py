@@ -98,7 +98,17 @@ async def HkEarn_Function(event):
                             start = await HkEarn_VisitSites(event, site_data)
                     
                     if view_posts_tasks != None:
-                        pass
+                        click, view_data = await TasksMenu.click(1), await conv.get_response()
+                        if "😟 Sorry, there are no new ads available." in view_data.text:
+                            pass
+                        elif "Click 'Continue' to view the post and earn your cryptocurrency 👇" in view_data.text:
+                            view_url = view_data.reply_markup.rows[0].buttons[0].url
+                            browser = await createDriver()
+                            browser.get(view_url)
+                            button = WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="form-submit"]/button'))).click()
+                            await asyncio.sleep(2)
+                        else:
+                            start = await HkEarn_ViewPosts(event)
                     
                 elif "You are currently in an active operation; to use another command or function, you must first cancel this operation." in TasksMenu.text:
                     await conv.send_message('/cancel')
@@ -168,8 +178,10 @@ async def HkEarn_Function(event):
         Sleep, Cancel = await asyncio.sleep(2), await event.client.send_message(entity="@hkearn_usdt_bot", message='/cancel')
     
     # view posts
-    async def HkEarn_ViewPosts():
-        pass
+    async def HkEarn_ViewPosts(event):
+        Sleep, Message = await asyncio.sleep(1), await event.client(GetHistoryRequest(peer="@hkearn_usdt_bot", offset_id=0, offset_date=None, add_offset=0, limit=1, max_id=0, min_id=0, hash=0))
+        Sleep, confirm = await asyncio.sleep(12), await Message.messages[0].click(0)
+        
     
     # daily reward
     async def HkEarn_DailyReward():
