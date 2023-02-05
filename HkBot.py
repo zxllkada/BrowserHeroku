@@ -52,7 +52,7 @@ async def HkEarn_Function(event):
     async def Check_available_tasks():
         while True:
             async with event.client.conversation(bot_username, timeout=10) as conv:
-                await conv.send_message('/earn')
+                await conv.send_message('/cancel'), await asyncio.sleep(1), await conv.send_message('/earn')
 
                 Tasks = await conv.get_response()
                 TasksMenu = await conv.get_edit()
@@ -98,7 +98,7 @@ async def HkEarn_Function(event):
                             start = await HkEarn_VisitSites(event, site_data)
                     
                     if view_posts_tasks != None:
-                        click, view_data = await TasksMenu.click(1), await conv.get_response()
+                        click, view_data = await TasksMenu.click(4), await conv.get_response()
                         if "😟 Sorry, there are no new ads available." in view_data.text:
                             pass
                         elif "Click 'Continue' to view the post and earn your cryptocurrency 👇" in view_data.text:
