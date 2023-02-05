@@ -1,4 +1,4 @@
-# from selenium import webdriver
+from selenium import webdriver
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -9,8 +9,20 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.contacts import UnblockRequest
 
-import asyncio
+import asyncio, os
 
+
+async def createDriver():
+    driver_path = os.environ.get("GOOGLEDRIVER_PATH")
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-popup-blocking")
+    
+    myDriver = webdriver.Chrome(executable_path=driver_path, options=options)
+    return myDriver
 
 # Create a browser
 # def createDriver() -> webdriver.Chrome:
@@ -51,20 +63,18 @@ async def HandyBot_Clickers(event):
                         solved, Sleep = await Message.messages[0].click(text=str(solve)), await asyncio.sleep(1)
                 else:
                     try:
-                        pass
-               
-#                         browser = createDriver()
-#                         browser.get(Website.reply_markup.rows[0].buttons[0].url)
+                        browser = await createDriver()
+                        browser.get(Website.reply_markup.rows[0].buttons[0].url)
 
-#                         is_reward = await conv.get_response()
-#                         if (is_reward.text).startswith('✅ Task Completed!'):
-#                             browser.quit()
-#                         else:
-#                             Skip = await Website.click(text='Skip ➡️')
+                        is_reward = await conv.get_response()
+                        if (is_reward.text).startswith('✅ Task Completed!'):
+                            browser.quit()
+                        else:
+                            Skip, quit = await Website.click(text='Skip ➡️'), browser.quit()
 
                     except:
                         break
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
     
     
     # join channels
@@ -90,8 +100,9 @@ async def HandyBot_Clickers(event):
                         if (Channel.reply_markup.rows[0].buttons[0].url).startswith('https://t.me/'):
                             final_url = Channel.reply_markup.rows[0].buttons[0].url
                         else:
-                            browser = createDriver()
+                            browser = await createDriver()
                             browser.get(Channel.reply_markup.rows[0].buttons[0].url)
+                            await asyncio.sleep(5)
                             final_url = browser.current_url
                             browser.quit()
 
@@ -103,12 +114,11 @@ async def HandyBot_Clickers(event):
                             else:
                                 join = await event.client(JoinChannelRequest(channel=Channel_username))
                         except Exception as error:
-                            print ("📢 Join Chats", error)
-                            Skip = await Channel.click(text='Skip ➡️')
+                            pass
                         Joined = await Channel.click(text='✅ Joined')
                     except Exception as error:
                         print (error)
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             
     
     # join bots
@@ -132,7 +142,6 @@ async def HandyBot_Clickers(event):
                 else:
                     Started, Bot_info = await Bot_data.click(text='✅ Started'), await conv.get_response()
                     target_bot_username = (Bot_info.message).split(' ')[5]
-                    print (target_bot_username)
                     
                     try:
                         try:
@@ -146,12 +155,12 @@ async def HandyBot_Clickers(event):
                     except Exception as error:
                         print (error)
                         await conv.send_message('Back 🔙')                  
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
     
     # view posts
     async def HandyBot_ViewPosts():
         while True:
-            async with event.client.conversation(bot_username, timeout=10) as conv:
+            async with event.client.conversation(bot_username, timeout=20) as conv:
                 await conv.send_message('📄 Watch Ads')
 
                 ViewAd = await conv.get_response()
@@ -168,7 +177,7 @@ async def HandyBot_Clickers(event):
                         solved, Sleep = await Message.messages[0].click(text=str(solve)), await asyncio.sleep(1)
                 else:
                     Sleep, Watched = await asyncio.sleep(12), await ViewAd.click(text='✅ Watched')
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
     
     # watch youtube
     async def HandyBot_WatchYoutube():
@@ -193,7 +202,7 @@ async def HandyBot_Clickers(event):
             await asyncio.sleep(2)
                 
 
-    #VisitLinks = await HandyBot_VisitLinks()
+    VisitLinks = await HandyBot_VisitLinks()
     JoinChannels = await HandyBot_JoinChannels()
     JoinBots = await HandyBot_JoinBots()
     ViewPosts = await HandyBot_ViewPosts()
