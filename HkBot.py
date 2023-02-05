@@ -126,7 +126,7 @@ async def HkEarn_Function(event):
         browser = await createDriver()
         browser.get(site_url)
         button = WebDriverWait(browser, 200).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="form"]/button'))).click()
-        await asyncio.sleep(3)
+        await asyncio.sleep(4)
         browser.quit()
 
     # join chats
@@ -178,12 +178,12 @@ async def HkEarn_Function(event):
         Message = await event.client(GetHistoryRequest(peer=bott_username, offset_id=0, offset_date=None, add_offset=0, limit=1, max_id=0, min_id=0, hash=0))
         Forward = await event.client(ForwardMessagesRequest(from_peer=bott_username, to_peer="@hkearn_usdt_bot", id=[Message.messages[0].id]))
         DeleteBot = await event.client(DeleteHistoryRequest(peer=bott_username, max_id=0, just_clear=True, revoke=True))
-        Sleep, Cancel = await asyncio.sleep(2), await event.client.send_message(entity="@hkearn_usdt_bot", message='/cancel')
+        Sleep, Cancel = await asyncio.sleep(4), await event.client.send_message(entity="@hkearn_usdt_bot", message='/cancel')
     
     # view posts
     async def HkEarn_ViewPosts(event):
         Sleep, Message = await asyncio.sleep(1), await event.client(GetHistoryRequest(peer="@hkearn_usdt_bot", offset_id=0, offset_date=None, add_offset=0, limit=1, max_id=0, min_id=0, hash=0))
-        Sleep, confirm = await asyncio.sleep(12), await Message.messages[0].click(0)
+        Sleep, confirm, Sleep = await asyncio.sleep(12), await Message.messages[0].click(0),  await asyncio.sleep(4)
         
     
     # daily reward
