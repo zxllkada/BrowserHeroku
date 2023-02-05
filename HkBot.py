@@ -120,6 +120,7 @@ async def HkEarn_Function(event):
     
     # visit sites
     async def HkEarn_VisitSites(event, site_data):
+        print (site_data)
         site_url = site_data.reply_markup.rows[0].buttons[0].url
         
         browser = await createDriver()
@@ -130,6 +131,7 @@ async def HkEarn_Function(event):
 
     # join chats
     async def HkEarn_JoinChats(event, channel_data):
+        print (channel_data)
         channel_url = channel_data.reply_markup.rows[0].buttons[0].url
         
         if "https://t.me/" in channel_url:
@@ -155,6 +157,7 @@ async def HkEarn_Function(event):
     
     # join bots
     async def HkEarn_JoinBots(event, bot_data):
+        print (bot_data)
         bot_url = bot_data.reply_markup.rows[0].buttons[0].url
         
         if "https://t.me/" in bot_url:
