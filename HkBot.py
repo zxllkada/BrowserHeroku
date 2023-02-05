@@ -150,7 +150,7 @@ async def HkEarn_Function(event):
         except:
             pass
             
-        confirm = await channel_data.click(1)
+        confirm, Sleep = await channel_data.click(1), await asyncio.sleep(4)
 
     
     # join bots
