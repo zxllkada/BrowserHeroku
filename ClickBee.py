@@ -52,7 +52,7 @@ async def ClickBee_Function(event):
                 await conv.send_message('💻 Visit Sites')
 
                 Website = await conv.get_response()
-                if str(Website.message).startswith('‼️Oh no! There are NO TASKS available for you.'):
+                if str(Website.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
                     await conv.send_message('🔙 Back'), await asyncio.sleep(2)
                     break
                 else:
@@ -74,7 +74,7 @@ async def ClickBee_Function(event):
                 await conv.send_message('🤖 Message Bots')
 
                 MessageBot = await conv.get_response()
-                if str(MessageBot.message).startswith('‼️Oh no! There are NO TASKS available for you.'):
+                if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
                     await conv.send_message('🔙 Back'), await asyncio.sleep(2)
                     break
                 else:
@@ -102,7 +102,7 @@ async def ClickBee_Function(event):
                 await conv.send_message('📣 Join Chats')
                     
                 MessageBot = await conv.get_response()
-                if str(MessageBot.message).startswith('‼️Oh no! There are NO TASKS available for you.'):
+                if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
                     await conv.send_message('🔙 Back'), await asyncio.sleep(2)
                     break
                 else:
@@ -129,7 +129,7 @@ async def ClickBee_Function(event):
                 await conv.send_message('👁 Post Views')
                     
                 MessageBot = await conv.get_response()
-                if str(MessageBot.message).startswith('‼️Oh no! There are NO TASKS available for you.'):
+                if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
                     await conv.send_message('🔙 Back'), await asyncio.sleep(2)
                     break
                 else:
