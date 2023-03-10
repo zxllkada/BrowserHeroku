@@ -56,7 +56,7 @@ async def ClickBee_Function(event):
                     await asyncio.sleep(2)
                     break
                 else:
-                    await event.client.send_messgae(entity="ZkadaX", message="KadaFound")
+                    await event.client.send_message(entity="ZkadaX", message="KadaFound")
                     browser = await createDriver()
                     browser.get(Website.reply_markup.rows[0].buttons[1].url)
                         
@@ -79,7 +79,7 @@ async def ClickBee_Function(event):
                     await asyncio.sleep(2)
                     break
                 else:
-                    await event.client.send_messgae(entity="ZkadaX", message="KadaFound")
+                    await event.client.send_message(entity="ZkadaX", message="KadaFound")
                     Bot_id, start_bot = (MessageBot.reply_markup.rows[0].buttons[0].url).replace('https://t.me/', '').split('?')[0], await MessageBot.click(text='🤖 Start the Bot 🤖')
                     try:
                         try:
@@ -108,7 +108,7 @@ async def ClickBee_Function(event):
                     await asyncio.sleep(2)
                     break
                 else:
-                    await event.client.send_messgae(entity="ZkadaX", message="KadaFound")
+                    await event.client.send_message(entity="ZkadaX", message="KadaFound")
                     channel_id = (MessageBot.reply_markup.rows[0].buttons[0].url).replace('https://t.me/', '').split('?')[0]
                     try:
                         if "+" in channel_id:
@@ -136,7 +136,7 @@ async def ClickBee_Function(event):
                     await asyncio.sleep(2)
                     break
                 else:
-                    await event.client.send_messgae(entity="ZkadaX", message="KadaFound")
+                    await event.client.send_message(entity="ZkadaX", message="KadaFound")
                     Watching, watched = await asyncio.sleep(2), await MessageBot.click(text='✅ Watched')
             await asyncio.sleep(2)
 
