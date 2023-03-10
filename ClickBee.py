@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.channels import LeaveChannelRequest
 from telethon.tl.functions.contacts import UnblockRequest
 
-import asyncio
+import asyncio, os
 
 
 
