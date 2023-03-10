@@ -71,7 +71,7 @@ async def ClickBee_Function(event):
     async def MessageBotsForward():
         while True:
             async with event.client.conversation(bot_username, timeout=10) as conv:
-                await conv.send_message('🤖 Message Bots')
+                await conv.send_message('🤖 Join Bots')
 
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
@@ -99,7 +99,7 @@ async def ClickBee_Function(event):
     async def JoinChannels():
         while True:
             async with event.client.conversation(bot_username, timeout=10) as conv:
-                await conv.send_message('📣 Join Chats')
+                await conv.send_message('📣 Join Channels')
                     
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
@@ -126,7 +126,7 @@ async def ClickBee_Function(event):
     async def WatchPosts():
         while True:
             async with event.client.conversation(bot_username, timeout=10) as conv:
-                await conv.send_message('👁 Post Views')
+                await conv.send_message('👁 Views Posts')
                     
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
