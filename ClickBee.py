@@ -21,7 +21,7 @@ async def createDriver():
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-popup-blocking")
+    #options.add_argument("--disable-popup-blocking")
     
     myDriver = webdriver.Chrome(executable_path=driver_path, options=options)
     return myDriver
@@ -53,7 +53,7 @@ async def ClickBee_Function(event):
 
                 Website = await conv.get_response()
                 if str(Website.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
-                    await conv.send_message('🔙 Back'), await asyncio.sleep(2)
+                    await asyncio.sleep(2)
                     break
                 else:
                     browser = await createDriver()
@@ -75,7 +75,7 @@ async def ClickBee_Function(event):
 
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
-                    await conv.send_message('🔙 Back'), await asyncio.sleep(2)
+                    await asyncio.sleep(2)
                     break
                 else:
                     Bot_id, start_bot = (MessageBot.reply_markup.rows[0].buttons[0].url).replace('https://t.me/', '').split('?')[0], await MessageBot.click(text='🤖 Start the Bot 🤖')
@@ -103,7 +103,7 @@ async def ClickBee_Function(event):
                     
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
-                    await conv.send_message('🔙 Back'), await asyncio.sleep(2)
+                    await asyncio.sleep(2)
                     break
                 else:
                     channel_id = (MessageBot.reply_markup.rows[0].buttons[0].url).replace('https://t.me/', '').split('?')[0]
@@ -130,7 +130,7 @@ async def ClickBee_Function(event):
                     
                 MessageBot = await conv.get_response()
                 if str(MessageBot.message).startswith('⛔️ Oh no! There are NO TASKS available at the moment.'):
-                    await conv.send_message('🔙 Back'), await asyncio.sleep(2)
+                    await asyncio.sleep(2)
                     break
                 else:
                     Watching, watched = await asyncio.sleep(2), await MessageBot.click(text='✅ Watched')
